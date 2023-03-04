@@ -14,8 +14,9 @@ const Navbar = () => {
   const [active,setActive]=useState("home");
   return <>
     <div className="navbar">
-        <div className="brand">
-            <img src={icon} alt="letsGrow" />
+    <div className="brand">
+          <img src={icon} className="brandIcon" alt="" />
+          <h2 className='brandName'>LetsGrow</h2>
         </div>
         <div className="tools">
             <div className="navItems">
@@ -36,7 +37,7 @@ const Navbar = () => {
                         {!user?.image ? <UserIcon /> : "" }
                     </div>
                 </> :
-                <Button variant='outlined' size='small' onClick={()=>{navigate("/auth"); setActive("signin")}} className={active==="signin"?"activeNavItem":""} >SIGN IN</Button>}
+                <Button variant="text" size='small' onClick={()=>{navigate("/account/login");}}  >SIGN IN</Button>}
             </div>
         </div>
     </div>

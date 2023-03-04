@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 .navbar{
     display:flex;
     /* background-color: grey; */
     align-items: center;
-    padding: 10px 100px;
+    padding: 0 100px;
     justify-content: space-between;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+
 }
 
 .navbar .brand img{
@@ -23,18 +28,16 @@
 
 }
 .navbar .tools .navItems ul li{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 1px;
-    padding:5px 10px;
-    font-size: 15px;
-    border-radius: 5px;
-    text-transform: uppercase;
+    padding:30px 30px;
+    text-transform: capitalize;
     cursor: pointer;
+}
+.navbar .tools .navItems ul li:hover{
+    color:#13AA52;
 }
 
 .activeNavItem{
-   background-color: rgba(0,0,0,0.1);
-   /* border:4px solid grey; */
+    border-bottom: 5px solid #13AA52;
 }
 
 .navbar .searchBar{

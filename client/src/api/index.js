@@ -9,4 +9,5 @@ API.interceptors.request.use((req)=>{
     return req;
 })
 
-export const  signup=(formData)=>API.post('/signup',formData);
+export const  signup=(signupData)=>API.post('users/signup',signupData);
+export const  googleLogin=(loginData)=>API.post('users/googleLogin',loginData);

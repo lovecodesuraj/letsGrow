@@ -11,9 +11,8 @@ const authReducer = (state = { authData: null, isLaoding: false, message: "" }, 
           isLoading: false
         }
       case 'AUTH':
-        const { name, email, picture } = action.data.user;
+        const { name, email, picture,_id } = action.data.user;
         const { token } = action.data;
-        const { _id } = action.data.user;
         localStorage.setItem('user', JSON.stringify({ name, email, picture, _id, token }));
         return { ...state, authData: { name, email, picture, _id, token }, message: "" };
       case "LOGOUT":

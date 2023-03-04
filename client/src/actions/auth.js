@@ -10,3 +10,13 @@ export const signup=(formData,navigate)=>async (dispatch)=>{
         console.log(error);
     }
  } 
+
+ export const googleLogin=(loginData,navigate)=>async (dispatch)=>{
+    try {
+        const {data}=await api.googleLogin(loginData);
+        dispatch({type:"AUTH",data});
+        navigate('/');
+    } catch (error) {
+        console.log(error);
+    }
+ }
