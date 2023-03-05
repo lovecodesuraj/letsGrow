@@ -1,4 +1,4 @@
-const authReducer = (state = { authData: null, isLaoding: false, message: "" }, action) => {
+const authReducer = (state = { authData: null, signupErron:"",isLaoding: false, message: "" }, action) => {
     switch (action.type) {
       case "START_LOADING":
         return {
@@ -10,10 +10,17 @@ const authReducer = (state = { authData: null, isLaoding: false, message: "" }, 
           ...state,
           isLoading: false
         }
+      case "SIGNUP_ERROR" :
+        return {...state,signupError:action.message};
+      case "OTP" :
+       return {...state,OTP:action.OTP}; 
+      case "SIGNUP_DATA" :
+        return {...state,signupData:action.data};
       case 'AUTH':
-        const { name, email, picture,_id } = action.data.user;
-        const { token } = action.data;
+        const { name, email, picture,_id } = action.response.data;
+        const { token } = action.response.data;
         localStorage.setItem('user', JSON.stringify({ name, email, picture, _id, token }));
+        localStorage.removeItem("signupData");
         return { ...state, authData: { name, email, picture, _id, token }, message: "" };
       case "LOGOUT":
         localStorage.clear();

@@ -56,12 +56,12 @@ const Auth = () => {
         <div className="manualLogin">
           <p>or</p>
           <div className="emailInput">
-            <label htmlFor="email" value={loginData.email} onChange={(e) => { setLoginData({ ...loginData, email: e.target.value }) }}>Email Address</label>
-            <input type="text" name='email' />
+            <label htmlFor="email" >Email Address</label>
+            <input type="text" name='email'value={loginData.email} onChange={(e) => { setLoginData({ ...loginData, email: e.target.value }) }} />
           </div>
           <div className="passwordInput">
-            <label htmlFor="password" value={loginData.password} onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }}>Password</label>
-            <input type="password" name='password' />
+            <label htmlFor="password" >Password</label>
+            <input type="password" name='password' value={loginData.password} onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }} />
           </div>
         </div>
 
