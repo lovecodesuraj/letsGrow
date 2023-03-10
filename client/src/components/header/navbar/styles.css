@@ -5,7 +5,6 @@
     align-items: center;
     padding: 0 100px;
     justify-content: space-between;
-    border-bottom: 2px solid rgba(0,0,0,0.2);
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
 
@@ -34,10 +33,12 @@
 }
 .navbar .tools .navItems ul li:hover{
     color:#13AA52;
+    box-shadow: 0 -4px 0  #13AA52 inset;
 }
 
 .activeNavItem{
-    border-bottom: 5px solid #13AA52;
+    /* border-bottom: 5px solid #13AA52; */
+    box-shadow: 0 -4px 0  #13AA52 inset;
 }
 
 .navbar .searchBar{
@@ -87,8 +88,10 @@
 }
 
 .navbar .user{
-    width: 25px;
+    /* width: 25px; */
     height: 25px;
     border-radius: 5px;
     cursor:pointer;
+    display: flex;
+    /* gap:20px, */
 }

@@ -16,7 +16,7 @@ const Otp = () => {
   const register=async()=>{
       try {
          if(otp==OTP){
-             dispatch(signup(signupData,navigate));
+             dispatch(signup(JSON.parse(signupData),navigate));
          }else{
             setMessage("Incorrect OTP.");
          }

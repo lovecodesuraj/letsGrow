@@ -9,7 +9,12 @@ API.interceptors.request.use((req)=>{
     return req;
 })
 
+// auth apis
 export const  signup=(signupData)=>API.post('users/signup',signupData);
 export const  otpVerification=(data)=>API.post('users/otpVerification',data);
 export const  signin=(signinData)=>API.post('users/signin',signinData);
 export const  googleLogin=(loginData)=>API.post('users/googleLogin',loginData);
+
+
+// bills apis
+export const fetchBills=()=>API.get(`/bills`);

@@ -6,6 +6,7 @@ const userSchema=mongoose.Schema({
       aadhaar:String,
       picture:String,
       createdAt:String,
+      password:String,
       followers:[String],
       following:[String],
       _id:String,

@@ -2,8 +2,10 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import userRoutes from "./routes/user.js";
+import billRoutes from "./routes/bill.js";
+
+import dotenv from "dotenv";
 dotenv.config();
 
 const PORT=process.env.PORT;
@@ -19,6 +21,7 @@ app.use(function(req, res, next) {
 });
 
 app.use("/users",userRoutes);
+app.use("/bills",billRoutes);
 
 app.get("/",(req,res)=>{
    res.send("server is running...");

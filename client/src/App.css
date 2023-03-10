@@ -1,7 +1,13 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@200&family=Roboto:ital@0;1&family=Source+Sans+Pro:wght@300&display=swap');
+
 *{
   margin: 0;
   padding: 0;
 }
 .app{
-
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  display: none;
 }
