@@ -18,3 +18,10 @@ export const  googleLogin=(loginData)=>API.post('users/googleLogin',loginData);
 
 // bills apis
 export const fetchBills=()=>API.get(`/bills`);
+
+
+
+export const fetchVotings=()=>API.get('/votings');
+export const createVoting=(formData)=>API.post('/votings/create',formData);
+export const addApproval=(formData)=>API.post('/votings/addApproval',formData);
+export const addDisapproval=(formData)=>API.post('/votings/addDisapproval',formData);

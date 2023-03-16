@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 .navbar{
     display:flex;
+    background-color: white;
     /* background-color: grey; */
     align-items: center;
     padding: 0 100px;
     justify-content: space-between;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+    position: sticky;
+    top:0px;
+    z-index: 10;
+    /* bottom: 100px; */
 
 }
 

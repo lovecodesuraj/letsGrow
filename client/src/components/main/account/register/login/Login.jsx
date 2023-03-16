@@ -7,8 +7,8 @@ import { clientId } from './data';
 import { TextField, Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { googleLogin } from '../../../../actions/auth';
-import { signin } from '../../../../actions/auth';
+import { googleLogin } from '../../../../../actions/auth';
+import { signin } from '../../../../../actions/auth'
 
 const Auth = () => {
   const navigate = useNavigate();

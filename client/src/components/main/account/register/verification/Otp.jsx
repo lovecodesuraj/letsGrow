@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import brandIcon from "../../login/green-tea.png";
+import brandIcon from "../login/green-tea.png";
 import { Button } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

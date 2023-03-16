@@ -1,0 +1,38 @@
+export const demoVotings = [
+    {
+        title:"Ban plastic",
+        description:"Approximately 7 billion of the 9.2 billion tonnes of plastic produced from 1950-2017 has become plastic waste, ending up in landfills or dumped in the open. Recycling will not help solve the global plastic pollution crisis. Towards ending plastic pollution, the United Nations Environment Assembly (UNEA) 5.2 established an Intergovernmental Negotiating Committee (INC) to draft an international legally binding instrument by the end of 2024. The first meeting of the INC was held on 28 November-2 December 2022 in Uruguay. In the run-up to the meeting, several member states, groups of states, and intergovernmental organisations issued statements of support; India was not among them.",
+        startDate:"",
+        endDate:"2023-03-16T14:48:00.000Z",
+        approvals:['i',"m","suraj",'and',"i","give","approval","to",'this'],
+        disapprovals:["but","i","dont"],
+        subscribers:["i","am","subscriber"],
+    },
+    {
+        title:"Ban plastic",
+        description:"Approximately 7 billion of the 9.2 billion tonnes of plastic produced from 1950-2017 has become plastic waste, ending up in landfills or dumped in the open. Recycling will not help solve the global plastic pollution crisis. Towards ending plastic pollution, the United Nations Environment Assembly (UNEA) 5.2 established an Intergovernmental Negotiating Committee (INC) to draft an international legally binding instrument by the end of 2024. The first meeting of the INC was held on 28 November-2 December 2022 in Uruguay. In the run-up to the meeting, several member states, groups of states, and intergovernmental organisations issued statements of support; India was not among them.",
+        startingDate:"2023-03-12T14:48:00.000Z",
+        endDate:"2023-03-16T14:48:00.000Z",
+        approvals:['i',"m","suraj",'and',"i","give","approval","to",'this'],
+        disapprovals:["but","i","dont"],
+        subscribers:["i","am","subscriber"],
+    },
+    {
+        title:"Ban plastic",
+        description:"Approximately 7 billion of the 9.2 billion tonnes of plastic produced from 1950-2017 has become plastic waste, ending up in landfills or dumped in the open. Recycling will not help solve the global plastic pollution crisis. Towards ending plastic pollution, the United Nations Environment Assembly (UNEA) 5.2 established an Intergovernmental Negotiating Committee (INC) to draft an international legally binding instrument by the end of 2024. The first meeting of the INC was held on 28 November-2 December 2022 in Uruguay. In the run-up to the meeting, several member states, groups of states, and intergovernmental organisations issued statements of support; India was not among them.",
+        startDate:"",
+        endDate:"2023-03-16T14:48:00.000Z",
+        approvals:['i',"m","suraj",'and',"i","give","approval","to",'this'],
+        disapprovals:["but","i","dont"],
+        subscribers:["i","am","subscriber"],
+    },
+    {
+        title:"Ban plastic",
+        description:"Approximately 7 billion of the 9.2 billion tonnes of plastic produced from 1950-2017 has become plastic waste, ending up in landfills or dumped in the open. Recycling will not help solve the global plastic pollution crisis. Towards ending plastic pollution, the United Nations Environment Assembly (UNEA) 5.2 established an Intergovernmental Negotiating Committee (INC) to draft an international legally binding instrument by the end of 2024. The first meeting of the INC was held on 28 November-2 December 2022 in Uruguay. In the run-up to the meeting, several member states, groups of states, and intergovernmental organisations issued statements of support; India was not among them.",
+        startDate:"",
+        endDate:"2023-03-16T14:48:00.000Z",
+        approvals:['i',"m","suraj",'and',"i","give","approval","to",'this'],
+        disapprovals:["but","i","dont"],
+        subscribers:["i","am","subscriber"],
+    },
+]

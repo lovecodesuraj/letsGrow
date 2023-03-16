@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
 import billRoutes from "./routes/bill.js";
+import votingRoutes from "./routes/voting.js";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(function(req, res, next) {
 
 app.use("/users",userRoutes);
 app.use("/bills",billRoutes);
+app.use("/votings",votingRoutes);
 
 app.get("/",(req,res)=>{
    res.send("server is running...");

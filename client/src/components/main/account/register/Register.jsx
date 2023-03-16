@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { GoogleLogin, GoogleOAuthProvider, googleLogout } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
-import { clientId } from '../login/data';
-import brandIcon from "../login/green-tea.png";
+import { clientId } from '../register/login/data';
+import brandIcon from "../register/login/green-tea.png";
 import { Button } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
