@@ -1,11 +1,26 @@
-import {addApproval,addDisapproval, fetchVotings,createVoting } from "../controllers/voting.js";
+import {fetchMySubscribedVotings,fetchSearchedVotings,deleteVoting,fetchMyVotings, addApproval,addDisapproval, subscribe,fetchVotings,createVoting } from "../controllers/voting.js";
 import express from "express";
 
 const router=express.Router();
 
+
+ //read 
  router.get("/",fetchVotings);
+ router.post("/myVotings",fetchMyVotings);
+ router.post("/subscribedVotings",fetchMySubscribedVotings);
+ router.post("/search",fetchSearchedVotings);
+
+
+//  update
+router.patch("/addApproval",addApproval);
+router.patch("/addDisapproval",addDisapproval);
+router.patch("/subscribe",subscribe);
+
+
+//write
  router.post("/create",createVoting);
- router.post("/addApproval",addApproval);
- router.post("/addDisapproval",addDisapproval);
+
+ //delete
+ router.delete("/delete/:_id",deleteVoting);
   
 export default router;

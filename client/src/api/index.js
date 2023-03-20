@@ -10,18 +10,34 @@ API.interceptors.request.use((req)=>{
 })
 
 // auth apis
+
 export const  signup=(signupData)=>API.post('users/signup',signupData);
 export const  otpVerification=(data)=>API.post('users/otpVerification',data);
 export const  signin=(signinData)=>API.post('users/signin',signinData);
 export const  googleLogin=(loginData)=>API.post('users/googleLogin',loginData);
+export const sendNotification=(formData)=>API.post('users/sendNotification',formData);
+export const fetchNotifications=({userId})=>API.get(`users/fetchNotifications/${userId}`);
 
 
-// bills apis
-export const fetchBills=()=>API.get(`/bills`);
+
+// discussions
+
+export const fetchDiscussions=()=>API.get(`/discussions`);
+export const fetchDiscussion=({votingId})=>API.get(`/discussions/${votingId}`);
 
 
+
+//votings
 
 export const fetchVotings=()=>API.get('/votings');
+export const fetchSearchedVotings=(formData)=>API.post('/votings/search',formData);
+export const fetchMyVotings=(formData)=>API.post('votings/myVotings',formData);
+export const fetchMySubscribedVotings=(formData)=>API.post('/votings/subscribedVotings',formData);
 export const createVoting=(formData)=>API.post('/votings/create',formData);
-export const addApproval=(formData)=>API.post('/votings/addApproval',formData);
-export const addDisapproval=(formData)=>API.post('/votings/addDisapproval',formData);
+export const addApproval=(formData)=>API.patch('/votings/addApproval',formData);
+export const addDisapproval=(formData)=>API.patch('/votings/addDisapproval',formData);
+export const subscribe=(formData)=>API.patch('/votings/subscribe',formData);
+export const deleteVoting=({votingId})=>API.delete(`/votings/delete/${votingId}`);
+
+
+

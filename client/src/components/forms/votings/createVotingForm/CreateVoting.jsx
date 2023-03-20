@@ -6,10 +6,15 @@ import { useSelector } from 'react-redux';
 import {createVoting} from "../../../../actions/votings";
 import { useDispatch } from 'react-redux';
 
+const user=JSON.parse(localStorage.getItem("user"));
+// console.log({user})
 const defaultData = {
     title: "",
     description: "",
     lastDate: '',
+    creator:user?._id,
+    name:user?.name,
+    creatorPicture:user?.picture,
 }
 const CreateVotingForm = () => {
     const dispatch=useDispatch();
@@ -21,8 +26,9 @@ const CreateVotingForm = () => {
     const { isLoading } = useSelector(state => state.votings);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // if(!user) return navigate("/account/login");
         setLoading(true);
-        dispatch(createVoting(formData));
+        dispatch(createVoting({formData,navigate}));
         setFormData(defaultData);
         setLoading(false);
         setSubmitted(true);

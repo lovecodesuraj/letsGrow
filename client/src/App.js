@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './components/header/navbar/Navbar';
 import Home from './components/main/home/Home';
 import { Routes, Route, redirect } from "react-router-dom"
-// import Login from './components/main/account/login/Login';
+import Discussion from './components/main/discussions/discussion/Discussion';
 import Login from './components/main/account/register/login/Login'
 import Register from './components/main/account/register/Register';
 import Otp from './components/main/account/register/verification/Otp';
@@ -16,7 +16,7 @@ function App() {
   const {signupData}=useSelector(state=>state.auth);
   const {authData}=useSelector(state=>state.auth);
   // console.log("authData",authData);
-
+  // localStorage.clear();
   return <>
     <div className='app'>
       <Navbar />
@@ -28,6 +28,7 @@ function App() {
         <Route exact path="/account/verification" element={signupData?<Otp />:<Register />} />
         <Route exact path="/votings" element={<Votings />} />
         <Route exact path="/votings/create" element={<CreateVotingForm />} />
+        <Route exact path="/discussions/:_id" element={<Discussion />} />
       </Routes>
     </div>
   </>;

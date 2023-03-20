@@ -4,6 +4,8 @@ const votingSchema=mongoose.Schema({
     title:String,
     description:String,
     startingDate:String,
+    creator:String,
+    creatorName:String,
     lastDate:String,
     subscribers:[String],
     approvals:[String],

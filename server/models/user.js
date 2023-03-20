@@ -9,6 +9,7 @@ const userSchema=mongoose.Schema({
       password:String,
       followers:[String],
       following:[String],
+      notifications:[String],
       _id:String,
 });
 

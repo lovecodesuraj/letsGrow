@@ -13,6 +13,12 @@ const votingsReducer = (state = { votings: [], isLaoding: false, voting: {} }, a
             const newVotings=state.votings.map(voting=>voting._id===action.data.votingId ? action.data.voting : voting);
             // console.log({newVotings});
             return {...state,votings:[...newVotings]}
+        case "DELETE_VOTING" :
+            const filteredVotings=state.votings.filter(voting=> voting._id!==action.formData.votingId);
+            console.log([filteredVotings]);
+            return {...state,votings:filteredVotings};
+        case "SET_DETAILED_VOTING" :
+            return {...state,voting:action.voting};
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 const Chart = ({ data }) => {
-    const COLORS = ["#FFBB28", "#AF19FF"];
+    const COLORS = ["#80A92A","#0D2A47"];
     // console.log(data)
     return <>
         <Paper 
@@ -68,11 +68,11 @@ const Chart = ({ data }) => {
                     ml: "16px"
                 }}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <Box style={{ width: "16px", height: "16px", backgroundColor: "#FFBB28", borderRadius: "5px" }}></Box>
+                    <Box style={{ width: "16px", height: "16px", backgroundColor: "#80A92A", borderRadius: "5px" }}></Box>
                     Approvals
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }} >
-                    <Box style={{ width: "16px", height: "16px", backgroundColor: "#AF19FF", borderRadius: "5px" }}></Box>
+                    <Box style={{ width: "16px", height: "16px", backgroundColor: "#0D2A47", borderRadius: "5px" }}></Box>
                     Disapprovals
                 </Box>
             </Box>

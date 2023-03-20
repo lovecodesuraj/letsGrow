@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { randomUUID } from 'crypto';
+import Voting from "../models/voting.js";
 dotenv.config(); 
 export const signup = async (req, res) => {
     const { firstName, lastName, email,password }=req.body;
@@ -56,5 +57,35 @@ export const googleLogin = async (req, res) => {
         res.status(200).json({user});
     } catch (error) {
         res.status(400).json(error);
+    }
+}
+
+export const sendNotification=async(req,res)=>{
+    const {votingId,notification}=req.body;
+    try {
+        const {subscribers}=await Voting.findOne({_id:votingId});
+        subscribers.forEach(async(subscriber) => {
+            const {notifications}=await User.findOne({_id:subscriber});
+            const user=await User.findOneAndUpdate({_id:subscriber},{notifications:[...notifications,notification]},{new:true});
+        });  
+        res.status(200).json({message:"notification sent."});
+
+    } catch (error) {
+        console.log({error});
+        res.status(400).json({error});
+    }
+}
+
+
+export const fetchNotifications=async(req,res)=>{
+    const {_id}=req.params;
+    // console.log(_id)
+    try {
+        const {notifications}=await User.findOne({_id});
+        res.status(200).json({notifications});
+
+    } catch (error) {
+        console.log({error});
+        res.status(400).json({error});
     }
 }
