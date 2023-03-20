@@ -36,7 +36,7 @@ const Navbar = () => {
                 <ul>
                     {/* <li className={active==="home"?"activeNavItem":""} onClick={()=>{navigate("/");setActive("home")}}>home</li> */}
                     <li className={active==="votings"?"activeNavItem":""} onMouseEnter={()=>{setActive("votings")}} onClick={()=>{setActive("votings"); navigate("/votings")}}>votings</li>
-                    <li className={active==="discussions"?"activeNavItem":""} onMouseEnter={()=>{setActive("discussions")}} onClick={()=>{setActive("discussions")}}>discusssions</li>
+                    <li className={active==="discussions"?"activeNavItem":""} onMouseEnter={()=>{setActive("discussions")}} onClick={()=>{setActive("discussions");navigate("/discussions")}}>discusssions</li>
                     <li className={active==="about"?"activeNavItem":""} onMouseEnter={()=>{setActive("about")}} onClick={()=>{setActive("about");navigate("/about")}}>about</li>
                 </ul>
             </div>

@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import About from './components/main/about/About';
 import Votings from './components/main/votings/Votings';
 import CreateVotingForm from './components/forms/votings/createVotingForm/CreateVoting';
+import Discussions from './components/main/discussions/Discussions';
 function App() {
   const navigate=useNavigate();
   const {signupData}=useSelector(state=>state.auth);
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/account/verification" element={signupData?<Otp />:<Register />} />
         <Route exact path="/votings" element={<Votings />} />
         <Route exact path="/votings/create" element={<CreateVotingForm />} />
+        <Route exact path="/discussions" element={<Discussions />} />
         <Route exact path="/discussions/:_id" element={<Discussion />} />
       </Routes>
     </div>
