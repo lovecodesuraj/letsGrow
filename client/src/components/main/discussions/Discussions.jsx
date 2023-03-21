@@ -12,7 +12,7 @@ const Discussions = () => {
     }
     ,[dispatch])
   return (
-    <div>{discussions.length}</div>
+    <div>{discussions.length} discussions now</div>
   )
 }
 

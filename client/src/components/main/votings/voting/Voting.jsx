@@ -92,7 +92,7 @@ const Voting = ({ voting }) => {
                   <Stack direction="column"  spacing={0.5}   >
                         {/* <IconButton size='small' ><MoreIcon /></IconButton> */}
                         <IconButton size='small'
-                         onClick={e=>{e.preventDefault(); navigate(`/discussions/${_id}`)}}
+                         onClick={e=>{e.preventDefault(); user ? navigate(`/discussions/${_id}`):navigate("/account/login")}}
                         ><DiscussionIcon /></IconButton>
                         <IconButton size='small' ><ShareIcon /> </IconButton>
                         {user?._id === voting?.creator ?

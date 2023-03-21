@@ -11,6 +11,7 @@ export const fetchDiscussions=async(req,res)=>{
 }
 export const fetchDiscussion=async(req,res)=>{
     const {votingId} =req.params;
+    // console.log({params:req.params})
     try {
         const discussion=await Discussion.findOne({votingId});
         res.status(200).json({discussion});

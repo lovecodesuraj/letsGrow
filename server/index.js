@@ -5,7 +5,11 @@ import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
 import billRoutes from "./routes/bill.js";
 import votingRoutes from "./routes/voting.js";
-import discussionRoutes from "./routes/discussion.js"
+import discussionRoutes from "./routes/discussion.js";
+
+// import http from "http";
+// import {Server} from "socket.io";
+
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -19,13 +23,16 @@ app.use(bodyParser.json({limit:"30mb",extended:true}))
 app.use(bodyParser.urlencoded({limit:"30mb",extended:true}))
 app.use(function(req, res, next) {
    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-      next();
+   next();
 });
 
 app.use("/users",userRoutes);
 app.use("/bills",billRoutes);
 app.use("/votings",votingRoutes);
 app.use("/discussions",discussionRoutes);
+
+// const server=http.createServer(app);
+
 
 app.get("/",(req,res)=>{
    res.send("server is running...");

@@ -49,11 +49,12 @@ export const createVoting=async(req,res)=>{
         });
         await Discussion.create({
             votingId:voting._id,
-            title:voting.title,
+            name:voting.title,
             messages:[],
         })
         res.status(200).json({voting});
     } catch (error) {
+        console.log({error})
         res.status(400).json({error});
     }
 }

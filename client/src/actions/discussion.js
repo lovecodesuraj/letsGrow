@@ -11,10 +11,13 @@ export const fetchDiscussions = () => async (dispatch) => {
         console.log({ error });
     }
 }
+
 export const fetchDiscussion = ({votingId}) => async (dispatch) => {
     try {
+        // console.log({votingId})
         dispatch({ type: "START_LOADING" });
         const { data } = await api.fetchDiscussion({votingId});
+        // console.log({data})
         dispatch({ type: "FETCH_DISCUSSION", data });
         dispatch({ type: "END_LOADING" });
     }
