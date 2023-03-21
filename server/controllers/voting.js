@@ -51,6 +51,7 @@ export const createVoting=async(req,res)=>{
             votingId:voting._id,
             name:voting.title,
             messages:[],
+            members:[creator],
         })
         res.status(200).json({voting});
     } catch (error) {

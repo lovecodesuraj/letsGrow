@@ -24,6 +24,9 @@ export const fetchNotifications=({userId})=>API.get(`users/fetchNotifications/${
 
 export const fetchDiscussions=()=>API.get(`/discussions`);
 export const fetchDiscussion=({votingId})=>API.get(`/discussions/${votingId}`);
+export const fetchDefaultDiscussion=({userId})=>API.get(`/discussions/default/${userId}`);
+export const  fetchJoinedDiscussions=({userId})=>API.get(`/discussions/joined/${userId}`);
+export const saveMessage=(formData)=>API.post(`discussions/saveMessage`,formData);
 
 
 

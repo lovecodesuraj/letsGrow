@@ -9,7 +9,8 @@ const discussionSchema=mongoose.Schema({
       votingId:{
         type:String,
         required:true
-      }
+      },
+      members:[String],
 });
 
  const Discussion = mongoose.model('Discussion',discussionSchema);
