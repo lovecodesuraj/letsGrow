@@ -18,11 +18,8 @@ const Discussion = ({ socket }) => {
     const user = JSON.parse(localStorage.getItem("user"));
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [search, setSearch] = useState("");
     const { discussion, isLoading } = useSelector(state => state.discussions);
-    // if(_id===undefined){
-    //     _id=
-    // }
+
 
 
     useEffect(() => {
@@ -65,7 +62,8 @@ const Discussion = ({ socket }) => {
                         <Grid item md={12} sm={12} xs={12} sx={{ backgroundColor: "#F8F9FB" }}>
 
                             {isLoading ? <CircularProgress />
-                                : <ChatBox initialMessages={discussion.messages} socket={socket} />
+                                : 
+                                <ChatBox initialMessages={discussion.messages} socket={socket} />
                             }
                         </Grid>
                     </Grid>

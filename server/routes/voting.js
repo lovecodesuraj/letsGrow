@@ -1,4 +1,4 @@
-import {fetchMySubscribedVotings,fetchSearchedVotings,deleteVoting,fetchMyVotings, addApproval,addDisapproval, subscribe,fetchVotings,createVoting } from "../controllers/voting.js";
+import {fetchMySubscribedVotings,fetchVoting,fetchSearchedVotings,deleteVoting,fetchMyVotings, addApproval,addDisapproval, subscribe,fetchVotings,createVoting } from "../controllers/voting.js";
 import express from "express";
 
 const router=express.Router();
@@ -6,6 +6,7 @@ const router=express.Router();
 
  //read 
  router.get("/",fetchVotings);
+ router.get("/:_id",fetchVoting);
  router.post("/myVotings",fetchMyVotings);
  router.post("/subscribedVotings",fetchMySubscribedVotings);
  router.post("/search",fetchSearchedVotings);

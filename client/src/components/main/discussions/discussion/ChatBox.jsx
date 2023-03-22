@@ -1,45 +1,73 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { saveMessage } from '../../../../actions/discussion';
 import { IconButton, Typography, Grid, Paper, TextField } from '@mui/material';
 import SendIcon from "@material-ui/icons/SendOutlined"
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Stack,Box } from '@mui/material';
+import { Stack, Box } from '@mui/material';
 import SendOutlined from '@material-ui/icons/SendOutlined';
+import { fetchDiscussion } from "../../../../actions/discussion"
+import { leaveDiscussion } from '../../../../actions/discussion';
+import LeaveIcon from "@material-ui/icons/ExitToApp"
 
 
-const ChatBox = ({ initialMessages, socket }) => {
+const ChatBox = ({ socket,initialMessages,name }) => {
     const { _id } = useParams();
     const user = JSON.parse(localStorage.getItem("user"));
+    const userId=user?._id;
     const dispatch = useDispatch();
-    const [message, setMessage] = useState({
-        name: user?.name,
-        userId: user?._id,
-        room: _id,
-        text: "",
-        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-    });
+
+    // const [message, setMessage] = useState("");
+    const message = useRef();
+
     const [messages, setMessages] = useState(initialMessages);
+
+    const handleKeyDown = async (e) => {
+        try {
+            if (e.keyCode === 13) {
+                const formattedMessage = {
+                    name: user?.name,
+                    userId: user?._id,
+                    room: _id,
+                    text: message.current.value,
+                    time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+                }
+                await socket.emit("sendMessage", formattedMessage);
+                dispatch(saveMessage({ _id, message: formattedMessage }))
+                setMessages([...messages, formattedMessage]);
+                message.current.value = "";
+                var elem = document.getElementById('messageBox');
+                elem.scrollTop = elem.scrollHeight;
+            }
+        } catch (error) {
+            console.log({ error });
+        }
+
+    }
+
+
 
     const send = async (e) => {
         e.preventDefault();
-        await socket.emit("sendMessage", message);
-        dispatch(saveMessage({ votingId: _id, message }))
-        setMessages([...messages, message]);
-        setMessage({
+        const formattedMessage = {
             name: user?.name,
             userId: user?._id,
             room: _id,
-            text: "",
+            text: message.current.value,
             time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-        })
+        }
+        await socket.emit("sendMessage", formattedMessage);
+        dispatch(saveMessage({ _id, message: formattedMessage }))
+        setMessages([...messages, formattedMessage]);
+        message.current.value = "";
         var elem = document.getElementById('messageBox');
         elem.scrollTop = elem.scrollHeight;
     }
 
     useEffect(() => {
 
+        // dispatch(fetchDiscussion({_id}));
         socket.emit("joinRoom", _id);
         socket.on("recieveMessage", (data) => {
             setMessages(prev => [...prev, data]);
@@ -47,19 +75,25 @@ const ChatBox = ({ initialMessages, socket }) => {
             elem.scrollTop = elem.scrollHeight;
         })
     }
-        , [socket])
+        , [socket, _id])
 
     return <>
-        <Grid container md={12} style={{minHeight:"75vh",maxHeight:"75vh"}} >
-            <Grid item md={12} sm={12} xs={12}>
 
-                <Stack
+            <Paper elevation={0 } style={{height:"88vh"}}>
+            <Paper elevation={2} style={{display:"flex",padding:"0 10px",height:"10%",alignItems:"center",justifyContent:"space-between"}}  >
+                <Typography variant="h5" style={{color:"rgb(93,108,116)",}}>{name}</Typography>
+                <IconButton onClick={e=>{e.preventDefault(); dispatch(leaveDiscussion({userId,_id}))}}><LeaveIcon /></IconButton>
+            </Paper>
+            <Stack
                     id='messageBox'
                     direction="column"
                     spacing={1}
+                    pt={2}
+                    pb={2}
                     style={{
                         overflowY: "auto",
-                        maxHeight: '66vh',
+                        height: '75%',
+                        // backgroundColor:"grey",
                         width: "100%",
                     }}
                 >
@@ -92,34 +126,31 @@ const ChatBox = ({ initialMessages, socket }) => {
                     )
                     ) : ""}
                 </Stack>
-            </Grid>
+                <Paper elevation={6} style={{height:"10%"}}>
 
-            <Grid item sx={12} md={12} sm={12} style={{height:"9vh"}}>
-                <Stack direction="column">
-                    <Box style={{ width: "98%", borderRadius: "5px", display: "flex", backgroundColor: "rgba(0,0,0,0.1)", margin: "auto" }}>
-                        <input 
-                        value={message.text}
-                        onKeyDown={e => { e.keyCode === 13 ? send(e) : console.log("") }}
-                        onChange={e => { setMessage({ ...message, text: e.target.value }) }}
-                        type="text" style={{width:"90%", padding: "20px", border: "0px solid", background: "transparent", color: "rgb(45,45,45)", fontFamily: "Roboto" }} />
-                        <IconButton style={{backgroundColor:""}} onClick={send}><img src="https://cdn-icons-png.flaticon.com/128/3682/3682321.png" height="25px" /></IconButton>
-                    </Box>
-                </Stack>
-                {/* <Stack  direction="row" sx={{backgroundColor:"#EBEBEB"}}>
+                        <input
+                            type="text"
+                            // value={message}
+                            // value={message.current}
+                            ref={message}
+                            placeholder="Message"
+                            onKeyDown={handleKeyDown}
+                            style={{
+                                width: "90%",
+                                padding: "20px",
+                                border: "0px solid",
+                                background: "transparent",
+                                color: "rgb(45,45,45)",
+                                fontFamily: "Roboto"
+                            }}
+                            />
+                        <IconButton style={{ backgroundColor: "" }} onClick={send}><img src="https://cdn-icons-png.flaticon.com/128/3682/3682321.png" height="25px" /></IconButton>
+                </Paper>
 
-                    <TextField
-                        size='small'
-                        onKeyDown={e => { e.keyCode === 13 ? send(e) : console.log("") }}
-                        onChange={e => { setMessage({ ...message, text: e.target.value }) }}
-                        fullWidth
-                    />
-                    <IconButton size='medium'  >
-                        <SendIcon color='primary' onClick={send} />
-                    </IconButton>
-                </Stack> */}
-            </Grid>
+             </Paper>  
 
-        </Grid>
+
+        {/* </Grid> */}
     </>
 }
 

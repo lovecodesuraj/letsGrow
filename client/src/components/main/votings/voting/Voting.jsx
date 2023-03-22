@@ -21,6 +21,7 @@ const Voting = ({ voting }) => {
    const navigate = useNavigate();
    const { _id } = voting;
    const user = JSON.parse(localStorage.getItem('user'));
+
    const data = [{ name: "Aprrovals", value: voting.approvals.length }, { name: "disapprovals", value: voting.disapprovals.length },];
    return (
       <>
@@ -91,9 +92,9 @@ const Voting = ({ voting }) => {
 
                   <Stack direction="column"  spacing={0.5}   >
                         {/* <IconButton size='small' ><MoreIcon /></IconButton> */}
-                        <IconButton size='small'
-                         onClick={e=>{e.preventDefault(); user ? navigate(`/discussions/${_id}`):navigate("/account/login")}}
-                        ><DiscussionIcon /></IconButton>
+                        {/* <IconButton size='small'
+                         onClick={e=>{e.preventDefault(); setDiscussion({_id:discussion._id}); user ? navigate(`/discussions/${_id}`):navigate("/account/login")}}
+                        ><DiscussionIcon /></IconButton> */}
                         <IconButton size='small' ><ShareIcon /> </IconButton>
                         {user?._id === voting?.creator ?
                      <IconButton size='small'

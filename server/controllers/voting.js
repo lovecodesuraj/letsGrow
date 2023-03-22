@@ -12,6 +12,16 @@ export const fetchVotings=async(req,res)=>{
     }
 }
 
+export const fetchVoting=async(req,res)=>{
+    const {_id}=req.params;
+    try {
+        const voting=await Voting.findById(_id);
+        res.status(200).json({voting});
+    } catch (error) {
+        res.status(400).json({error});
+    }
+}
+
 export const fetchMySubscribedVotings=async(req,res)=>{
     const {userId}=req.body;
     try {

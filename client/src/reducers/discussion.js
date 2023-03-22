@@ -1,4 +1,4 @@
-const discussionReducer = (state = { discussions: [],joinedDiscussions:[], isLoading: false, discussion: {},messages:[], }, action) => {
+const discussionReducer = (state = { discussions: [],activeDiscussion:{},joinedDiscussions:[], isLoading: false, discussion: {},messages:[], }, action) => {
     switch (action.type) {
         case "START_LOADING":
             return { ...state, isLoading: true };
@@ -14,6 +14,8 @@ const discussionReducer = (state = { discussions: [],joinedDiscussions:[], isLoa
             return {...state,messages:[...state.messages,action.message]}
         case "FETCH_JOINED_DISCUSSIONS" :
             return {...state,joinedDiscussions:action.data.discussions};
+        case "SET_ACTIVE_DISCUSSION" :
+            return {...state,activeDiscussion:action.data.dicsussion};
         default:
             return state;
     }

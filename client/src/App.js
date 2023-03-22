@@ -36,7 +36,7 @@ function App() {
         <Route exact path="/votings" element={<Votings />} />
         <Route exact path="/votings/create" element={<CreateVotingForm />} />
         <Route exact path="/discussions" element={<Discussions socket={socket} />} />
-        <Route exact path="/discussions/:_id" element={<Discussion socket={socket} />} />
+        <Route exact path="/discussions/:_id" element={<Discussions socket={socket} />} />
       </Routes>
     </div>
   </>;

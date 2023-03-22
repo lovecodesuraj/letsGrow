@@ -6,6 +6,8 @@ const votingsReducer = (state = { votings: [], isLaoding: false, voting: {} }, a
             return { ...state, isLaoding: false };
         case "FETCH_VOTINGS":
             return { ...state, votings: action.data.votings };
+        case "FETCH_VOTING":
+            return { ...state, voting: action.data.voting };
         case "CREATE_VOTING":
             return { ...state, votings: [...state.votings,action.data.voting]};
         case "UPDATE_VOTING" :

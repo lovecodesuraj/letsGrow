@@ -26,12 +26,38 @@ export const fetchJoinedDiscussions = ({userId}) => async (dispatch) => {
 
 
 
-export const fetchDiscussion = ({votingId}) => async (dispatch) => {
+export const joinDiscussion = ({userId,_id,navigate}) => async (dispatch) => {
     try {
         // console.log({votingId})
         dispatch({ type: "START_LOADING" });
-        const { data } = await api.fetchDiscussion({votingId});
+        const { data } = await api.joinDiscussion({userId,_id});
+        navigate(`/discussions/${_id}`);
         // console.log({data})
+        // dispatch({ type: "FETCH_DISCUSSION", data });
+        dispatch({ type: "END_LOADING" });
+    }
+    catch (error) {
+        console.log({ error });
+    }
+}
+
+export const leaveDiscussion = ({userId,_id,navigate}) => async (dispatch) => {
+    try {
+        // console.log({votingId})
+        dispatch({ type: "START_LOADING" });
+        const { data } = await api.leaveDiscussion({userId,_id});
+        navigate(`/discussions/${_id}`);
+        dispatch({ type: "END_LOADING" });
+    }
+    catch (error) {
+        console.log({ error });
+    }
+}
+export const fetchDiscussion = ({_id}) => async (dispatch) => {
+    try {
+        // console.log({votingId})
+        dispatch({ type: "START_LOADING" });
+        const { data } = await api.fetchDiscussion({_id});
         dispatch({ type: "FETCH_DISCUSSION", data });
         dispatch({ type: "END_LOADING" });
     }

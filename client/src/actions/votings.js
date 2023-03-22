@@ -11,6 +11,20 @@ export const fetchVotings=()=>async (dispatch)=>{
         console.log(error);
     }
 }
+
+export const fetchVoting=({_id})=>async (dispatch)=>{
+    try {        
+        dispatch({type:"START_LOADING"});
+        const {data}=await api.fetchVoting({_id});
+        // console.log({data})
+        dispatch({type:"FETCH_VOTING",data});
+        dispatch({type:"END_LOADING"});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 export const fetchSearchedVotings=(formData)=>async (dispatch)=>{
     try {        
         dispatch({type:"START_LOADING"});

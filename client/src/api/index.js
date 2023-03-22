@@ -23,16 +23,19 @@ export const fetchNotifications=({userId})=>API.get(`users/fetchNotifications/${
 // discussions
 
 export const fetchDiscussions=()=>API.get(`/discussions`);
-export const fetchDiscussion=({votingId})=>API.get(`/discussions/${votingId}`);
+export const fetchDiscussion=({_id})=>API.get(`/discussions/${_id}`);
+export const joinDiscussion=({userId,_id})=>API.patch(`/discussions/${_id}/join`,{userId});
+export const leaveDiscussion=({userId,_id})=>API.patch(`/discussions/${_id}/leave`,{userId});
 export const fetchDefaultDiscussion=({userId})=>API.get(`/discussions/default/${userId}`);
 export const  fetchJoinedDiscussions=({userId})=>API.get(`/discussions/joined/${userId}`);
-export const saveMessage=(formData)=>API.post(`discussions/saveMessage`,formData);
+export const saveMessage=(formData)=>API.patch(`discussions/saveMessage`,formData);
 
 
 
 //votings
 
 export const fetchVotings=()=>API.get('/votings');
+export const fetchVoting=({_id})=>API.get(`/votings/${_id}`);
 export const fetchSearchedVotings=(formData)=>API.post('/votings/search',formData);
 export const fetchMyVotings=(formData)=>API.post('votings/myVotings',formData);
 export const fetchMySubscribedVotings=(formData)=>API.post('/votings/subscribedVotings',formData);
